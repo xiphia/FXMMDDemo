@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ListView?>
+<VBox xmlns="http://javafx.com/fxml/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="info.xiphia.mmd.demo.AppController">
+    <MenuBar>
+        <Menu text="File">
+            <MenuItem text="Load PMX" onAction="#loadPMX" />
+        </Menu>
+    </MenuBar>
+    <SplitPane dividerPositions="0.20, 0.80" VBox.vgrow="ALWAYS">
+        <VBox spacing="5">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10" />
+            </padding>
+            <VBox>
+                <Label text="Camera Angle:" />
+                <Slider fx:id="degXSlider" showTickMarks="true" showTickLabels="true" majorTickUnit="30" minorTickCount="10" min="0" max="360" />
+            </VBox>
+            <VBox>
+                <Label text="Light(X):" />
+                <Slider fx:id="lightXSlider" showTickMarks="true" showTickLabels="true" majorTickUnit="500" minorTickCount="100" min="-1000" max="1000" value="1000" />
+            </VBox>
+            <VBox>
+                <Label text="Light(Y):" />
+                <Slider fx:id="lightYSlider" showTickMarks="true" showTickLabels="true" majorTickUnit="500" minorTickCount="100" min="-1000" max="1000" value="-1000" />
+            </VBox>
+            <VBox>
+                <Label text="Light(Z):" />
+                <Slider fx:id="lightZSlider" showTickMarks="true" showTickLabels="true" majorTickUnit="500" minorTickCount="100" min="-1000" max="1000" value="-1000" />
+            </VBox>
+        </VBox>
+
+        <VBox>
+            <AnchorPane fx:id="anchor" VBox.vgrow="ALWAYS">
+            </AnchorPane>
+        </VBox>
+
+        <VBox>
+            <Accordion VBox.vgrow="ALWAYS">
+                <panes>
+                    <TitledPane text="Vertices">
+                        <content>
+                            <VBox>
+                                <ListView fx:id="vertexList" VBox.vgrow="ALWAYS" />
+                            </VBox>
+                        </content>
+                    </TitledPane>
+                    <TitledPane text="Faces">
+                        <content>
+                            <VBox>
+                                <ListView fx:id="faceList" VBox.vgrow="ALWAYS" />
+                            </VBox>
+                        </content>
+                    </TitledPane>
+                    <TitledPane text="Textures">
+                        <content>
+                            <VBox>
+                                <ListView fx:id="textureList" VBox.vgrow="ALWAYS" />
+                                <ImageView fx:id="textureImage" fitWidth="200" preserveRatio="true" />
+                            </VBox>
+                        </content>
+                    </TitledPane>
+                    <TitledPane text="Materials">
+                        <content>
+                            <VBox>
+                                <ListView fx:id="materialList" VBox.vgrow="ALWAYS" />
+                            </VBox>
+                        </content>
+                    </TitledPane>
+                </panes>
+            </Accordion>
+        </VBox>
+    </SplitPane>
+</VBox>
